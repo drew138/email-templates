@@ -1,7 +1,6 @@
 # email-templates
 
-HTML templates for the emails I send myself, written in [Liquid](https://liquidjs.com/) so the
-same file renders in Uptime Kuma (which uses liquidjs for SMTP notifications) and in CI.
+HTML email templates written in [Liquid](https://liquidjs.com/).
 
 ## alert.html
 
@@ -13,10 +12,9 @@ same file renders in Uptime Kuma (which uses liquidjs for SMTP notifications) an
 | `hostnameOrURL` | link at the bottom |
 | `heartbeatJSON.localDateTime`, `heartbeatJSON.timezone` | time row, when present |
 | `details` | extra rows, a list of `label` and `value` |
-| `source` | footer, `Uptime Kuma` by default |
+| `source` | footer |
 
-Uptime Kuma fills `name`, `status`, `msg`, `hostnameOrURL` and `heartbeatJSON` itself. Elsewhere,
-render it with:
+Render it with:
 
 ```bash
 npx -y liquidjs@10.30.1 -t @alert.html -c @context.json -o mail.html
