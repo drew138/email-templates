@@ -1,0 +1,18 @@
+{%- if status contains "Up" -%}{%- assign accent = "#3fb950" -%}{%- else -%}{%- assign accent = "#ff7b72" -%}{%- endif -%}
+<div style="background:#0d1117;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.6;padding:30px 24px">
+<div style="font-size:18px;font-weight:700;color:#e6edf3;margin-bottom:14px">{{ name | escape }}</div>
+<table role="presentation" cellpadding="0" cellspacing="0" style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px">
+<tr><td style="padding:2px 16px 2px 0;color:#7d8590;white-space:nowrap;vertical-align:top">status</td><td style="padding:2px 0;color:{{ accent }};word-break:break-all">{{ status | escape }}</td></tr>
+{%- if heartbeatJSON and heartbeatJSON["localDateTime"] %}
+<tr><td style="padding:2px 16px 2px 0;color:#7d8590;white-space:nowrap;vertical-align:top">time</td><td style="padding:2px 0;color:#e6edf3;word-break:break-all">{{ heartbeatJSON["localDateTime"] | escape }} ({{ heartbeatJSON["timezone"] | escape }})</td></tr>
+{%- endif %}
+{%- for detail in details %}
+<tr><td style="padding:2px 16px 2px 0;color:#7d8590;white-space:nowrap;vertical-align:top">{{ detail.label | escape }}</td><td style="padding:2px 0;color:#e6edf3;word-break:break-all">{{ detail.value | escape }}</td></tr>
+{%- endfor %}
+<tr><td style="padding:2px 16px 2px 0;color:#7d8590;white-space:nowrap;vertical-align:top">message</td><td style="padding:2px 0;color:#e6edf3;word-break:break-all">{{ msg | escape }}</td></tr>
+</table>
+{%- if hostnameOrURL and hostnameOrURL != "testing.hostname" %}
+<div style="margin-top:20px"><a href="{{ hostnameOrURL | escape }}" style="color:{{ accent }}">{{ hostnameOrURL | escape }}</a></div>
+{%- endif %}
+<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#7d8590;margin-top:24px">{{ source | default: "Uptime Kuma" | escape }}</div>
+</div>
