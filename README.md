@@ -12,7 +12,7 @@ HTML email templates written in [Liquid](https://liquidjs.com/).
 | `hostnameOrURL` | link at the bottom |
 | `heartbeatJSON.localDateTime`, `heartbeatJSON.timezone` | time row, when present |
 | `details` | extra rows, a list of `label` and `value` |
-| `source` | footer |
+| `source` | footer, `Automated alert` by default |
 
 Render it with:
 

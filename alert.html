@@ -11,8 +11,8 @@
 {%- endfor %}
 <tr><td style="padding:2px 16px 2px 0;color:#7d8590;white-space:nowrap;vertical-align:top">message</td><td style="padding:2px 0;color:#e6edf3;word-break:break-all">{{ msg | escape }}</td></tr>
 </table>
-{%- if hostnameOrURL and hostnameOrURL != "testing.hostname" %}
+{%- if hostnameOrURL %}
 <div style="margin-top:20px"><a href="{{ hostnameOrURL | escape }}" style="color:{{ accent }}">{{ hostnameOrURL | escape }}</a></div>
 {%- endif %}
-<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#7d8590;margin-top:24px">{{ source | default: "Uptime Kuma" | escape }}</div>
+<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#7d8590;margin-top:24px">{{ source | default: "Automated alert" | escape }}</div>
 </div>
